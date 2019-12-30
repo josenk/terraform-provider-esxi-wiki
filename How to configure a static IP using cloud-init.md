@@ -1,7 +1,7 @@
 # Title:  How to configure a static IP address using cloud-init.
 
 # Description:
-  * This is a simple method to set an IP address to a esxi guest using the cloud-init package.
+  * This is a reasonably simple method to set an IP address to a esxi guest using the cloud-init package.
 
 # OS Support:
   * This example should support any Linux-type OS that supports cloud-init.
@@ -15,34 +15,34 @@
   * Only tried on Ubuntu 16.04 so far
 
 # Details:
-  * Build a guest/OVA manually or using pre-seed (see below) with cloud-init and VMWare datasource installed
+  * Build a guest/OVA manually or using preseed (see below) with cloud-init and VMware datasource installed
   * Terraform provisions the machine and sets guestinfo.metadata using a config file which is embedded as gzip+base64 content
   * On boot cloud-init reads the configuration from the guestinfo.metadata key and configures the network accordingly
 
 # Building guest/OVA
-  * Install basic OS manually or using pre-seed
+  * Install basic OS manually or using preseed
   * Install open-vm-tools, cloud-init, python3-pip, curl
-  * Install the VMWare Guestinfo datasource (see below)
+  * Install the VMware Guestinfo datasource (see below)
   * Remove all clauses from /etc/network/interfaces, except for the line "source /etc/network/interfaces.d/*"
   * Shut down the guest and extract as an OVA or leave for cloning
 
-# Installing VMWare Guestinfo datasource
+# Installing VMware Guestinfo datasource
 ```
 curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh | sh -
 ```
 
 # Example:
-  *  In your terraform directory, create a copy of the network configuration file.   Name it <guest_name>-metadata.cfg.  This example" vmstatic01-metadata.cfg
+  * In your terraform directory, create a copy of the network configuration file.   Name it <guest_name>-metadata.cfg.  This example "vmstatic01-metadata.cfg"
 ```
 network:
   version: 1
   config:
     - type: physical
-      name: eth0
+      name: ens32
       subnets:
         - type: static
-          address: 192.168.1.253/24
-          gateway: 192.168.1.1
+          address: 192.168.0.253/24
+          gateway: 192.168.0.1
     - type: nameserver
       address:
         - 8.8.8.8
