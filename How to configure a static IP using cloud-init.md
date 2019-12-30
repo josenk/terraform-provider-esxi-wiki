@@ -45,7 +45,7 @@ More information at https://github.com/vmware/cloud-init-vmware-guestinfo
 See: https://www.terraform.io/docs/providers/template/d/cloudinit_config.html
 
 # Example:
-  * In your terraform directory, create a copy of the network configura<tion file.   Name it <guest_name>-metadata.cfg.  This example "vmstatic01-metadata.cfg"
+  * In your terraform directory, create a copy of the network configuration file.   Name it <guest_name>-metadata.cfg.  This example "vmstatic01-metadata.cfg"
 ```
 network:
   version: 1
