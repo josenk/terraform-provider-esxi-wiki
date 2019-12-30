@@ -69,9 +69,8 @@ variable "esxi_hostname"  { default = "esxi" }
 variable "esxi_hostport"  { default = "22" }
 variable "esxi_username"  { default = "root" }
 variable "esxi_password"  { } # Unspecified will prompt
-variable "disk_store"     { default = "DataStore01" }
+variable "disk_store"     { default = "datastore1" }
 variable "guest_name"     { default = "vmstatic01" }
-variable "guest_password" { default = "MyGuestPW" }
 
 ```
   * main.tf
