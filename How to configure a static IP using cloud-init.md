@@ -23,7 +23,7 @@
   * Install basic OS manually or using preseed (I used the Ubuntu 16.04 mini.iso image: http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/netboot/mini.iso).
   * Install open-vm-tools, cloud-init, python3-pip, curl.
   * Install the VMware Guestinfo datasource (see below).
-  * Remove all clauses from /etc/network/interfaces, except for the line "source /etc/network/interfaces.d/*".
+  * Remove all clauses from /etc/network/interfaces, except for the line "source /etc/network/interfaces.d/*" - they will be set by cloud-init on boot.
   * Shut down the guest and extract as an OVA or leave for cloning.
 
 # Installing VMware Guestinfo datasource:
